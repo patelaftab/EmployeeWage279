@@ -12,11 +12,13 @@ namespace EmployeeWage279
         public const int IS_PART_TIME = 2;
         public const int EMP_RATE_PER_HR = 20;
         public const int No_OF_WORKING_DAYS = 20;
+        public const int MAX_WORKING_HRS = 100;
         public static void EmployeeInfo()
         {
 
-            int empHrs = 0, totalEmpWage = 0;
-            for (int day = 0;day< No_OF_WORKING_DAYS; day++) {
+            int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+            while (totalEmpHrs<= MAX_WORKING_HRS&& totalWorkingDays<=No_OF_WORKING_DAYS) {
+                totalWorkingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
@@ -34,10 +36,10 @@ namespace EmployeeWage279
                         Console.WriteLine("Employee is Absent");
                         break;
                 }
-                int empWage = empHrs * EMP_RATE_PER_HR;
-                totalEmpWage += empWage;
-                Console.WriteLine("Employe Daily Wage is: " + empWage);
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Days " + totalWorkingDays+"Employee Hrs: "+empHrs);
             }
+            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HR;
             Console.WriteLine("Total Employee Wage is: "+totalEmpWage);
         }
     }
